@@ -12,24 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/manitos")
+@RequestMapping("api/manitoes")
 public class ManitoController {
 
     private final ManitoService manitoService;
 
-    @PostMapping("/assign")
+    @PostMapping("/test")
     public void assignManito() {
         manitoService.assignManito();
     }
 
-    @GetMapping("/getManito")
+    @GetMapping("/giver")
     public ManitoResponseDto getManito() {
         return manitoService.getManito();
-    }
-
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello";
     }
 
 }
