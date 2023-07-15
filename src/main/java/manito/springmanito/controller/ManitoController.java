@@ -27,4 +27,8 @@ public class ManitoController {
         return manitoService.getManito();
     }
 
+    @GetMapping("hello")
+    public String hello() {
+        return "hello";
+    }
 }
