@@ -2,7 +2,7 @@ name: Spring-Boot-Manito-Amazon EC2
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
