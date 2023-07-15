@@ -4,7 +4,6 @@ package manito.springmanito.service;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import manito.springmanito.dto.LoginRequestDto;
-import manito.springmanito.dto.LoginResponseDto;
 import manito.springmanito.dto.MessageResponseDto;
 import manito.springmanito.dto.SignupRequestDto;
 import manito.springmanito.entity.User;
