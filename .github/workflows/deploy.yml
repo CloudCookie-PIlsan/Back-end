@@ -33,10 +33,9 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
-
     - uses: actions/checkout@v3
     - run: touch ./src/main/resources/application.properties
-    - run: echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.properties
+    - run: echo "${{ secrets.DATABASE_PROPERTIES }}" > ./src/main/resources/application.properties
     - run: cat ./src/main/resources/application.properties
 
     # (3) Gradle build (Test 제외)
