@@ -65,16 +65,16 @@ public class ManitoService {
      * 토큰 유효성 검증
      * @return
      */
-    private Claims getClaims(HttpServletRequest req) {
-        String tokenFromRequest = jwtUtil.getTokenFromRequest(req);
-        tokenFromRequest = jwtUtil.substringToken(tokenFromRequest);
-        // 토큰 검증
-        if (!jwtUtil.validateToken(tokenFromRequest)) {
-            throw new IllegalArgumentException("Token Error");
-        }
-        // 토큰에서 사용자 정보 가져오기
-        Claims info = jwtUtil.getUserInfoFromToken(tokenFromRequest);
-        return info;
-    }
+//    private Claims getClaims(HttpServletRequest req) {
+//        String tokenFromRequest = jwtUtil.getTokenFromRequest(req);
+//        tokenFromRequest = jwtUtil.substringToken(tokenFromRequest);
+//        // 토큰 검증
+//        if (!jwtUtil.validateToken(tokenFromRequest)) {
+//            throw new IllegalArgumentException("Token Error");
+//        }
+//        // 토큰에서 사용자 정보 가져오기
+//        Claims info = jwtUtil.getUserInfoFromToken(tokenFromRequest);
+//        return info;
+//    }
 }
 
