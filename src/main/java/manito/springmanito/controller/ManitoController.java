@@ -36,28 +36,4 @@ public class ManitoController {
     public String hello2() {
         return "hello";
     }
-
-    @GetMapping("/hello23")
-    public String hello23() {
-        return "hello";
-    }
-
-    @GetMapping("/hello234")
-    public String hello234() {
-        return "hello";
-    }
-
-    @GetMapping("/hello2345")
-    public String hello2345() {
-        return "hello3456";
-    }
-    @GetMapping("/hello23456")
-    public String hello23456() {
-        return "hello3456";
-    }
-
-    @GetMapping("/hello21")
-    public String hello234562() {
-        return "hello34562";
-    }
 }
