@@ -10,6 +10,9 @@ ERROR_LOG="$PROJECT_ROOT/error.log"
 DEPLOY_LOG="$PROJECT_ROOT/deploy.log"
 TIME_NOW=$(date +%c)
 
+# 실행권한 주기
+chmod +x app/scripts/deploy.sh
+
 # 빌드 파일 복사
 echo "$TIME_NOW > 빌드 파일 복사" >> $DEPLOY_LOG
 cp build/libs/*.jar $JAR_FILE
