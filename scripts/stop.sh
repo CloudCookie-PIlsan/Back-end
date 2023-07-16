@@ -18,5 +18,6 @@ else
   kill -15 $CURRENT_PID
 fi
 
-echo "$TIME_NOW > 애플리케이션 실행..." >> $DEPLOY_LOGnohup java -jar $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
-java -jar $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
+# jar 파일 실행
+echo "$TIME_NOW > $JAR_FILE 파일 재실행" >> $DEPLOY_LOG
+nohup java -jar $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
