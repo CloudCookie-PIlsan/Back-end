@@ -41,7 +41,7 @@ public class ManitoController {
     public String hello52() {
         return "hello";
     }
-    @GetMapping("/test")
+    @GetMapping("/test1")
     public String test() {
         return "test";
     }
