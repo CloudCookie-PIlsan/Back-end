@@ -5,13 +5,11 @@ import lombok.RequiredArgsConstructor;
 import manito.springmanito.dto.ManitoResponseDto;
 import manito.springmanito.entity.Manito;
 import manito.springmanito.service.ManitoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 @RequestMapping("/api/manitoes")
 public class ManitoController {
 
