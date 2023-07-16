@@ -24,9 +24,9 @@ public class ManitoService {
 
     private final UserRepository userRepository;
 
-    private final JwtUtil jwtUtil;
+//    private final JwtUtil jwtUtil;
 
-    private final HttpServletRequest req;
+//    private final HttpServletRequest req;
 
     public void assignManito() {
         List<User> users = userRepository.findAll();
@@ -61,10 +61,10 @@ public class ManitoService {
         return new ManitoResponseDto("User8");
     }
 
-    /**
-     * 토큰 유효성 검증
-     * @return
-     */
+//    /**
+//     * 토큰 유효성 검증
+//     * @return
+//     */
 //    private Claims getClaims(HttpServletRequest req) {
 //        String tokenFromRequest = jwtUtil.getTokenFromRequest(req);
 //        tokenFromRequest = jwtUtil.substringToken(tokenFromRequest);

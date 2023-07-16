@@ -70,54 +70,54 @@ public class JwtUtil {
         }
     }
 
-//    // 검증 시, JWT 토큰을 Substring
-//    public String substringToken(String tokenValue) {
-//        if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
-//            return tokenValue.substring(7);
-//        }
-//        log.error("Not Found Token");
-//        throw new NullPointerException("Not Found Token");
-//    }
+    // 검증 시, JWT 토큰을 Substring
+    public String substringToken(String tokenValue) {
+        if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
+            return tokenValue.substring(7);
+        }
+        log.error("Not Found Token");
+        throw new NullPointerException("Not Found Token");
+    }
 
     // JWT 검증
-//    public boolean validateToken(String token) {
-//        try {
-//            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
-//            return true;
-//        } catch (SecurityException | MalformedJwtException | SignatureException e) {
-//            log.error("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
-//        } catch (ExpiredJwtException e) {
-//            log.error("Expired JWT token, 만료된 JWT token 입니다.");
-//        } catch (UnsupportedJwtException e) {
-//            log.error("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
-//        } catch (IllegalArgumentException e) {
-//            log.error("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
-//        }
-//        return false;
-//    }
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            return true;
+        } catch (SecurityException | MalformedJwtException | SignatureException e) {
+            log.error("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
+        } catch (ExpiredJwtException e) {
+            log.error("Expired JWT token, 만료된 JWT token 입니다.");
+        } catch (UnsupportedJwtException e) {
+            log.error("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
+        } catch (IllegalArgumentException e) {
+            log.error("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
+        }
+        return false;
+    }
 
     // JWT 에서 사용자 정보 가지고 오기
     // body 정보이므로 getBody()로 꺼내옴
-//    public Claims getUserInfoFromToken(String token) {
-//        return Jwts.parserBuilder()
-//                .setSigningKey(key)
-//                .build().parseClaimsJws(token).getBody();
-//    }
+    public Claims getUserInfoFromToken(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build().parseClaimsJws(token).getBody();
+    }
 
-//    public String getTokenFromRequest(HttpServletRequest req) {
-//        Cookie[] cookies = req.getCookies();
-//        if(cookies != null) {
-//            for (Cookie cookie : cookies) { // 가져온 쿠키 전부다 검사
-//                if (cookie.getName().equals(AUTHORIZATION_HEADER)) {
-//                    try {
-//                        return URLDecoder.decode(cookie.getValue(), "UTF-8"); // Encode 되어 넘어간 Value 다시 Decode
-//                    } catch (UnsupportedEncodingException e) {
-//                        return null;
-//                    }
-//                }
-//            }
-//        }
-//        return null;
-//    }
+    public String getTokenFromRequest(HttpServletRequest req) {
+        Cookie[] cookies = req.getCookies();
+        if(cookies != null) {
+            for (Cookie cookie : cookies) { // 가져온 쿠키 전부다 검사
+                if (cookie.getName().equals(AUTHORIZATION_HEADER)) {
+                    try {
+                        return URLDecoder.decode(cookie.getValue(), "UTF-8"); // Encode 되어 넘어간 Value 다시 Decode
+                    } catch (UnsupportedEncodingException e) {
+                        return null;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
 }

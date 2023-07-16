@@ -25,8 +25,8 @@ public class ManitoController {
     }
 
     @GetMapping("/hello")
-    public String hello() {
-        return "hello";
+    public ManitoResponseDto hello() {
+        return manitoService.getManito();
     }
 
 }
