@@ -34,31 +34,10 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    # application.properties 파일 생성
-    - name: Make application.properties
-      run: |
-        cd ./src/main/resources
-        touch ./application.properties
-        
-        echo "${{ secrets.DATABASE_PROPERTIES }}" >> ./application.properties
-      shell: bash
-
-#    - name: Setup MySQL
-#      uses: mirromutth/mysql-action@v1.1
-#      with:
-#        mysql database: 'board'
-#        mysql user: 'test'
-#        mysql password: ${{ secrets.MYSQL_PASSWORD }}
-
-#    - name: Set up environment variables
-#      env:
-#        DB_URL: ${{ secrets.DB_URL }}
-#        DB_USERNAME: ${{ secrets.DB_USERNAME }}
-#        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-#      run: |
-#        echo "DB_URL=${DB_URL}" >> $GITHUB_ENV
-#        echo "DB_USERNAME=${DB_USERNAME}" >> $GITHUB_ENV
-#        echo "DB_PASSWORD=${DB_PASSWORD}" >> $GITHUB_ENV
+    - uses: actions/checkout@v3
+    - run: touch ./src/main/resources/application.properties
+    - run: echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.properties
+    - run: cat ./src/main/resources/application.properties
 
     # (3) Gradle build (Test 제외)
     - name: Build with Gradle
