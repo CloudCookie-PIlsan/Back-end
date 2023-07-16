@@ -32,7 +32,7 @@ public class ManitoController {
         return "hello";
     }
 
-    @GetMapping("/hello2")
+    @GetMapping("/hello3")
     public String hello2() {
         return "hello";
     }
