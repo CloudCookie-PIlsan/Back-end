@@ -46,18 +46,19 @@ public class ManitoService {
     }
 
     public ManitoResponseDto getManito() {
-        Claims info = getClaims(req);
-        String userId = info.getSubject();
-        userRepository.findByUserId(userId).orElseThrow(() ->
-                new IllegalArgumentException("해당 아이디가 없습니다.")
-        );
+//        Claims info = getClaims(req);
+//        String userId = info.getSubject();
+//        userRepository.findByUserId(userId).orElseThrow(() ->
+//                new IllegalArgumentException("해당 아이디가 없습니다.")
+//        );
 
-        User myManito = manitoRepository.findMyManito(userId);
-        if (myManito == null) {
-            throw new IllegalArgumentException("마니또가 없습니다.");
-        }
+//        User myManito = manitoRepository.findMyManito(userId);
+//        if (myManito == null) {
+//            throw new IllegalArgumentException("마니또가 없습니다.");
+//        }
 
-        return new ManitoResponseDto(myManito.getUsername());
+//        return new ManitoResponseDto(myManito.getUsername());
+        return new ManitoResponseDto("User8");
     }
 
     /**
