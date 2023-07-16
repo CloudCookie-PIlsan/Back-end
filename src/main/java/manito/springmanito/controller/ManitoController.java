@@ -46,4 +46,9 @@ public class ManitoController {
     public String hello234() {
         return "hello";
     }
+
+    @GetMapping("/hello2345")
+    public String hello2345() {
+        return "hello3456";
+    }
 }
