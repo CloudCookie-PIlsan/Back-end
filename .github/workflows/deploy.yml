@@ -34,15 +34,15 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Set up environment variables
-      env:
-        DB_URL: ${{ secrets.DB_URL }}
-        DB_USERNAME: ${{ secrets.DB_USERNAME }}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      run: |
-        echo "DB_URL=${DB_URL}" >> $GITHUB_ENV
-        echo "DB_USERNAME=${DB_USERNAME}" >> $GITHUB_ENV
-        echo "DB_PASSWORD=${DB_PASSWORD}" >> $GITHUB_ENV
+#    - name: Set up environment variables
+#      env:
+#        DB_URL: ${{ secrets.DB_URL }}
+#        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+#        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+#      run: |
+#        echo "DB_URL=${DB_URL}" >> $GITHUB_ENV
+#        echo "DB_USERNAME=${DB_USERNAME}" >> $GITHUB_ENV
+#        echo "DB_PASSWORD=${DB_PASSWORD}" >> $GITHUB_ENV
 
     # (3) Gradle build (Test 제외)
     - name: Build with Gradle
