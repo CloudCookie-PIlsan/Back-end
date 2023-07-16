@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/manitoes")
+@RequestMapping("/api/manitoes")
 public class ManitoController {
 
     private final ManitoService manitoService;
@@ -27,7 +27,7 @@ public class ManitoController {
         return manitoService.getManito();
     }
 
-    @GetMapping("hello")
+    @GetMapping("/hello")
     public String hello() {
         return "hello";
     }
