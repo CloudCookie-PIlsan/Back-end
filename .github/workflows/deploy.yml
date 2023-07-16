@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - main
-#env:
-#  AWS_REGION: ap-northeast-2
-#  S3_BUCKET_NAME: cloud-cookie-manito
-#  CODE_DEPLOY_APPLICATION_NAME: my-codedeploy-app
-#  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: my-codedeploy-deployment-group
-#  DB_URL: ${{ secrets.DB_URL }}
-#  DB_USERNAME: ${{ secrets.DB_USERNAME }}
-#  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+env:
+  AWS_REGION: ap-northeast-2
+  S3_BUCKET_NAME: cloud-cookie-manito
+  CODE_DEPLOY_APPLICATION_NAME: my-codedeploy-app
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: my-codedeploy-deployment-group
+  DB_URL: ${{ secrets.DB_URL }}
+  DB_USERNAME: ${{ secrets.DB_USERNAME }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
  
 permissions:
   contents: read
@@ -39,14 +39,10 @@ jobs:
         DB_URL: ${{ secrets.DB_URL }}
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        AWS_REGION: ap-northeast-2
-        S3_BUCKET_NAME: cloud-cookie-manito
-        CODE_DEPLOY_APPLICATION_NAME: my-codedeploy-app
-        CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: my-codedeploy-deployment-group
       run: |
-        echo "DB_URL=${{ secrets.DB_URL }}" >> $GITHUB_ENV
-        echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> $GITHUB_ENV
-        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
+        echo "DB_URL=${DB_URL}" >> $GITHUB_ENV
+        echo "DB_USERNAME=${DB_USERNAME}" >> $GITHUB_ENV
+        echo "DB_PASSWORD=${DB_PASSWORD}" >> $GITHUB_ENV
 
     # (3) Gradle build (Test 제외)
     - name: Build with Gradle
