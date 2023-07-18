@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class UserController {
     private final UserService userService;
-
     @PostMapping("/signup")
     public MessageResponseDto signup(@Validated @RequestBody SignupRequestDto signupRequestDto){
         return userService.signup(signupRequestDto);

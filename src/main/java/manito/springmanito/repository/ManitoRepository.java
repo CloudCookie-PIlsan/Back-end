@@ -19,7 +19,7 @@ public interface ManitoRepository extends JpaRepository<Manito, Long> {
 //    @Query(value = "UPDATE Manito m SET m.receiver = :receiver WHERE m.sender = :sender")
 //    void updateReceiver(@Param("sender") User sender, @Param("receiver") User receiver);
 
-    @Query("SELECT m.receiver FROM Manito m WHERE m.sender.userId = :userId")
+    @Query("SELECT m.manitoReceiver FROM Manito m WHERE m.manitoSender.userId = :userId")
     User findMyManito(@Param("userId") String userId);
 
 }

@@ -53,7 +53,6 @@ public class UserService {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다");
         }
 
-        System.out.println("이프 안탐");
         // 토큰 만들기
         String token = jwtUtil.createToken(findUser.getUserId());
 
