@@ -1,11 +1,11 @@
-package manito.springmanito.controller;
+package manito.springmanito.user.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import manito.springmanito.dto.LoginRequestDto;
-import manito.springmanito.dto.UserResponseDto;
-import manito.springmanito.dto.SignupRequestDto;
-import manito.springmanito.service.UserService;
+import manito.springmanito.user.dto.LoginRequestDto;
+import manito.springmanito.user.dto.UserResponseDto;
+import manito.springmanito.user.dto.SignupRequestDto;
+import manito.springmanito.user.service.UserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

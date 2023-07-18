@@ -1,14 +1,14 @@
-package manito.springmanito.service;
+package manito.springmanito.user.service;
 
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import manito.springmanito.dto.LoginRequestDto;
-import manito.springmanito.dto.UserResponseDto;
-import manito.springmanito.dto.SignupRequestDto;
-import manito.springmanito.entity.User;
-import manito.springmanito.jwt.JwtUtil;
-import manito.springmanito.repository.UserRepository;
+import manito.springmanito.user.dto.LoginRequestDto;
+import manito.springmanito.user.dto.UserResponseDto;
+import manito.springmanito.user.dto.SignupRequestDto;
+import manito.springmanito.user.entity.User;
+import manito.springmanito.global.jwt.JwtUtil;
+import manito.springmanito.user.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

@@ -6,12 +6,12 @@ import lombok.RequiredArgsConstructor;
 import manito.springmanito.manito.dto.AnswerRequestDto;
 import manito.springmanito.manito.dto.AnswerResponseDto;
 import manito.springmanito.manito.dto.TodayManitoResponseDto;
-import manito.springmanito.jwt.JwtUtil;
+import manito.springmanito.global.jwt.JwtUtil;
 import manito.springmanito.manito.dto.YesterdayManitoResponseDto;
 import manito.springmanito.manito.repository.ManitoRepository;
-import manito.springmanito.repository.UserRepository;
+import manito.springmanito.user.repository.UserRepository;
 import manito.springmanito.manito.entity.Manito;
-import manito.springmanito.entity.User;
+import manito.springmanito.user.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

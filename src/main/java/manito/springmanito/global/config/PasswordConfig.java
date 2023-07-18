@@ -1,4 +1,4 @@
-package manito.springmanito.config;
+package manito.springmanito.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

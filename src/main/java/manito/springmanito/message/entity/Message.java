@@ -1,11 +1,11 @@
-package manito.springmanito.entity;
+package manito.springmanito.message.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import manito.springmanito.dto.MessageRequestDto;
-
-import java.util.List;
+import manito.springmanito.global.entity.Timestamped;
+import manito.springmanito.message.dto.MessageRequestDto;
+import manito.springmanito.user.entity.User;
 
 import static jakarta.persistence.FetchType.LAZY;
 

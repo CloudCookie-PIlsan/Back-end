@@ -1,9 +1,10 @@
-package manito.springmanito.entity;
+package manito.springmanito.user.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import manito.springmanito.manito.entity.Manito;
+import manito.springmanito.message.entity.Message;
 
 import java.util.List;
 

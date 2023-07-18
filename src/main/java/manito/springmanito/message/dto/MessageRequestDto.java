@@ -1,4 +1,4 @@
-package manito.springmanito.dto;
+package manito.springmanito.message.dto;
 
 import lombok.Getter;
 import lombok.Setter;

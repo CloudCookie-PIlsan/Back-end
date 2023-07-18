@@ -3,9 +3,8 @@ package manito.springmanito.manito.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import manito.springmanito.entity.Timestamped;
-import manito.springmanito.entity.User;
+import manito.springmanito.global.entity.Timestamped;
+import manito.springmanito.user.entity.User;
 
 @Entity
 @Getter
