@@ -1,4 +1,4 @@
-package manito.springmanito.config;
+package manito.springmanito.global.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

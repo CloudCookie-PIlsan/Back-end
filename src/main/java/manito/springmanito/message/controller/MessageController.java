@@ -1,8 +1,11 @@
-package manito.springmanito.controller;
+package manito.springmanito.message.controller;
 
 import lombok.RequiredArgsConstructor;
-import manito.springmanito.dto.*;
-import manito.springmanito.service.MessageService;
+import manito.springmanito.message.dto.MessageRequestDto;
+import manito.springmanito.message.dto.MessageResponseDto;
+import manito.springmanito.message.dto.ReceiveMessageResponseDto;
+import manito.springmanito.message.dto.SendMessageResponseDto;
+import manito.springmanito.message.service.MessageService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

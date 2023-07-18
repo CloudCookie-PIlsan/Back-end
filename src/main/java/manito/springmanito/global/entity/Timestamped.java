@@ -1,4 +1,4 @@
-package manito.springmanito.entity;
+package manito.springmanito.global.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

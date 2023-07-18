@@ -1,4 +1,4 @@
-package manito.springmanito.dto;
+package manito.springmanito.user.dto;
 
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;

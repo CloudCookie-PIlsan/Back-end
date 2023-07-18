@@ -1,8 +1,7 @@
-package manito.springmanito.dto;
+package manito.springmanito.message.dto;
 
 import lombok.Getter;
-import manito.springmanito.entity.Message;
-import manito.springmanito.entity.User;
+import manito.springmanito.message.entity.Message;
 
 @Getter
 public class ReceiveMessageResponseDto {

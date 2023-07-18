@@ -1,18 +1,18 @@
-package manito.springmanito.service;
+package manito.springmanito.message.service;
 
 import lombok.RequiredArgsConstructor;
-import manito.springmanito.dto.MessageRequestDto;
-import manito.springmanito.dto.MessageResponseDto;
 import manito.springmanito.manito.entity.Manito;
-import manito.springmanito.dto.ReceiveMessageResponseDto;
-import manito.springmanito.dto.SendMessageResponseDto;
 
-import manito.springmanito.entity.Message;
-import manito.springmanito.entity.User;
-import manito.springmanito.jwt.JwtUtil;
+import manito.springmanito.message.dto.MessageRequestDto;
+import manito.springmanito.message.dto.MessageResponseDto;
+import manito.springmanito.message.dto.ReceiveMessageResponseDto;
+import manito.springmanito.message.dto.SendMessageResponseDto;
+import manito.springmanito.message.entity.Message;
+import manito.springmanito.message.repository.MessageRepository;
+import manito.springmanito.user.entity.User;
+import manito.springmanito.global.jwt.JwtUtil;
 import manito.springmanito.manito.repository.ManitoRepository;
-import manito.springmanito.repository.MessageRepository;
-import manito.springmanito.repository.UserRepository;
+import manito.springmanito.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,9 +32,10 @@ public class MessageService {
         String userId = jwtUtil.getUsernameFromToken(token);
         // 로그인을 한 유저
         User loginUser = userRepository.findByUserId(userId).orElseThrow(
+                () -> new IllegalArgumentException("로그인을 해주세요!"));
+
 
         Manito myManito = manitoRepository.findManitoByGiverNameAndToday(loginUser.getUserId()).orElseThrow(
-        // 로그인 한 유저의 마니또 찾기
                 () -> new IllegalArgumentException("매칭된 마니또가 없습니다. 조금만 기다려주세요."));
 
         // 쪽지 보내기

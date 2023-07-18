@@ -1,11 +1,10 @@
-package manito.springmanito.repository;
+package manito.springmanito.message.repository;
 
-import manito.springmanito.entity.Message;
-import manito.springmanito.entity.User;
+import manito.springmanito.message.entity.Message;
+import manito.springmanito.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
     List<Message> findByMessageGiver(User messageGiver);
