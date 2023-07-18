@@ -7,10 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class YesterdayManitoResponseDto {
-
-    private String manitoGiver;
+    /**
+     * 어제의 마니또 이름
+     */
+    private String manitoReceiver;
     public YesterdayManitoResponseDto(String myManito) {
-        this.manitoGiver = myManito;
+        this.manitoReceiver = myManito;
     }
 }
 

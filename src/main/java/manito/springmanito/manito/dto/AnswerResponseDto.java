@@ -6,10 +6,29 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AnswerResponseDto {
+    /**
+     * 유저 이름
+     */
+    private String username = "";
+    /**
+     * 성공 여부
+     */
+    private boolean success;
 
-    private String message;
-
-    public AnswerResponseDto(String message) {
-        this.message = message;
+    /**
+     * 생성자
+     * @param success 성공 여부
+     * @param username 유저 이름
+     */
+    public AnswerResponseDto(boolean success, String username) {
+        this.username = username;
+        this.success = success;
+    }
+    /**
+     * 생성자
+     * @param success 성공 여부
+     */
+    public AnswerResponseDto(boolean success) {
+        this.success = success;
     }
 }

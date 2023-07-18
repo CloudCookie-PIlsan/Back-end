@@ -6,6 +6,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class AnswerRequestDto {
-
-        private String userName;
+        /**
+         * 유저 이름
+         */
+        private String username;
 }
