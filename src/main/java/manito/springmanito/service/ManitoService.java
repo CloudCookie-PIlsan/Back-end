@@ -52,11 +52,8 @@ public class ManitoService {
                 new IllegalArgumentException("해당 아이디가 없습니다.")
         );
 
-        User myManito = manitoRepository.findMyManito(userId);
-        if (myManito == null) {
-            throw new IllegalArgumentException("마니또가 없습니다.");
-        }
-
+        User myManito = manitoRepository.findMyManito(userId).orElseThrow(
+                () -> new IllegalArgumentException("매칭된 마니또가 없습니다. 조금만 기다려주세요."));
         return new ManitoResponseDto(myManito.getUsername());
     }
 

@@ -1,5 +1,6 @@
 package manito.springmanito.repository;
 
+import manito.springmanito.entity.Message;
 import manito.springmanito.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

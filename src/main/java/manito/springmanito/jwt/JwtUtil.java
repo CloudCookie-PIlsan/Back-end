@@ -7,6 +7,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import manito.springmanito.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -119,5 +120,18 @@ public class JwtUtil {
         }
         return null;
     }
+
+    public boolean isTokenValid(String token) {
+        String tokenValue = substringToken(token);
+        return validateToken(tokenValue);
+    }
+
+    // Token 에서 userId 가져오기
+    public String getUsernameFromToken(String token) {
+        String tokenValue = substringToken(token);
+        return getUserInfoFromToken(tokenValue).getSubject();
+    }
+
+
 
 }
