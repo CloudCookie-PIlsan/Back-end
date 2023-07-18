@@ -12,17 +12,27 @@ import java.util.Optional;
 
 @Repository
 public interface ManitoRepository extends JpaRepository<Manito, Long> {
-    List<Manito> findAll();
-
-    @Query("SELECT m FROM Manito m WHERE m.manitoSender.userId = :userId")
-    Optional<Manito> findMyManito(@Param("userId") String userId);
-
+    /**
+     * 오늘의 마니또 가져오기
+     * @param userid
+     * @return
+     */
     @Query("SELECT m FROM Manito m WHERE m.manitoSender.userId = :userid AND DATE(m.createdAt) = CURRENT_DATE")
     Optional<Manito> findManitoByGiverNameAndToday(@Param("userid") String userid);
 
+    /**
+     * 어제의 마니또 가져오기
+     * @param yesterday
+     * @return
+     */
     @Query("SELECT m FROM Manito m WHERE m.manitoReceiver.userId = :userId AND DATE(m.createdAt) = :yesterday")
     Optional<Manito> findManitoByReceiverIdAndYesterday(@Param("userId") String userId, @Param("yesterday") LocalDate yesterday);
 
+    /**
+     * 오늘 나를 마니또해주는사람 가져오기
+     * @param userId
+     * @return
+     */
     @Query("SELECT m FROM Manito m WHERE m.manitoReceiver.userId = :userId AND DATE(m.createdAt) = CURRENT_DATE")
     Optional<Manito> findManitoByReceiverIdAndToday(@Param("userId") String userId);
 

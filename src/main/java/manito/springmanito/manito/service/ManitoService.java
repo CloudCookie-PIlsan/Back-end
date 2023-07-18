@@ -51,10 +51,8 @@ public class ManitoService {
      * 오늘의 마니또 가져오기
      * @return
      */
-    public TodayManitoResponseDto getTodayManito() {
-        Claims info = getClaims(req);
-        // 아이디는 유니크
-        String userId = info.getSubject();
+    public TodayManitoResponseDto getTodayManito(String token) {
+        String userId = getString(token);
 
         userRepository.findByUserId(userId).orElseThrow(() ->
                 new IllegalArgumentException("해당 아이디가 없습니다.")
@@ -71,9 +69,8 @@ public class ManitoService {
      * 어제의 나를 마니또 한 사람 가져오기
      * @return
      */
-    public YesterdayManitoResponseDto getYesterdayManito() {
-        Claims info = getClaims(req);
-        String userId = info.getSubject();
+    public YesterdayManitoResponseDto getYesterdayManito(String token) {
+        String userId = getString(token);
 
         userRepository.findByUserId(userId).orElseThrow(() ->
                 new IllegalArgumentException("해당 아이디가 없습니다.")
@@ -87,9 +84,8 @@ public class ManitoService {
         return new YesterdayManitoResponseDto(myManito.getManitoSender().getUsername());
     }
 
-    public AnswerResponseDto postAnswer(AnswerRequestDto answerRequestDto) {
-        Claims info = getClaims(req);
-        String userId = info.getSubject();
+    public AnswerResponseDto postAnswer(AnswerRequestDto answerRequestDto, String token) {
+        String userId = getString(token);
 
         userRepository.findByUserId(userId).orElseThrow(() ->
                 new IllegalArgumentException("해당 아이디가 없습니다.")
@@ -98,34 +94,23 @@ public class ManitoService {
         Manito myManito = manitoRepository.findManitoByReceiverIdAndToday(userId).orElseThrow(
                 () -> new IllegalArgumentException("매칭된 마니또가 없습니다.")
         );
-        System.out.println(myManito.getManitoSender() + "현");;
-        System.out.println(answerRequestDto.getUserName() + "req");
+
         if (myManito.isAnswered()) {
-            return new AnswerResponseDto("이미 정답을 맞추셨습니다!");
-        } else if (myManito.getManitoSender().getUsername().equals(answerRequestDto.getUserName())) {
+            return new AnswerResponseDto(true, myManito.getManitoSender().getUsername());
+        } else if (myManito.getManitoSender().getUsername().equals(answerRequestDto.getUsername())) {
             myManito.isAnswered(true);
             manitoRepository.save(myManito);
-            return new AnswerResponseDto("정답입니다!");
+            return new AnswerResponseDto(true, myManito.getManitoSender().getUsername());
         } else {
-            return new AnswerResponseDto("오답입니다!");
+            return new AnswerResponseDto(false);
         }
     }
 
-    /**
-     * 토큰 유효성 검증
-     * @return
-     */
-    private Claims getClaims(HttpServletRequest req) {
-        String tokenFromRequest = jwtUtil.getTokenFromRequest(req);
-        tokenFromRequest = jwtUtil.substringToken(tokenFromRequest);
-        // 토큰 검증
-        if (!jwtUtil.validateToken(tokenFromRequest)) {
-            throw new IllegalArgumentException("Token Error");
-        }
-        // 토큰에서 사용자 정보 가져오기
-        Claims info = jwtUtil.getUserInfoFromToken(tokenFromRequest);
-        return info;
+    private String getString(String token) {
+        jwtUtil.isTokenValid(token);
+        return jwtUtil.getUsernameFromToken(token);
     }
+
 
     /**
      * 유효한 매칭 찾기
@@ -136,6 +121,7 @@ public class ManitoService {
         List<User> shuffledUsers = new ArrayList<>(users);
         boolean isValid;
         int count = 0;
+        Collections.shuffle(shuffledUsers);
         do {
             count++;
             Collections.shuffle(shuffledUsers);
@@ -145,7 +131,6 @@ public class ManitoService {
                 isValid = false;
             }
         } while (!isValid);
-        System.out.printf(count + "번째에 성공했습니다.");
         return shuffledUsers;
     }
 }

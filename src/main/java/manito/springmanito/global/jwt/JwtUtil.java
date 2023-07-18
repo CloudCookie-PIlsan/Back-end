@@ -24,7 +24,6 @@ public class JwtUtil {
 
     // JWT에서 사용하는 상수모음
     public static final String AUTHORIZATION_HEADER = "Authorization";
-    public static final String AUTHORIZATION_KEY = "auth";
     public static final String BEARER_PREFIX = "Bearer ";
 
     private final long TOKEN_EXPIRED_TIME = 60 * 60 * 1000L;    // 1 시간
@@ -86,14 +85,17 @@ public class JwtUtil {
             return true;
         } catch (SecurityException | MalformedJwtException | SignatureException e) {
             log.error("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
+            throw new IllegalArgumentException("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
         } catch (ExpiredJwtException e) {
             log.error("Expired JWT token, 만료된 JWT token 입니다.");
+            throw  new IllegalArgumentException("Expired JWT token, 만료된 JWT token 입니다.");
         } catch (UnsupportedJwtException e) {
             log.error("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
+            throw new IllegalArgumentException("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
         } catch (IllegalArgumentException e) {
             log.error("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
+            throw new IllegalArgumentException("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
         }
-        return false;
     }
 
     // JWT 에서 사용자 정보 가지고 오기
@@ -102,22 +104,6 @@ public class JwtUtil {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build().parseClaimsJws(token).getBody();
-    }
-
-    public String getTokenFromRequest(HttpServletRequest req) {
-        Cookie[] cookies = req.getCookies();
-        if(cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals(AUTHORIZATION_HEADER)) {
-                    try {
-                        return URLDecoder.decode(cookie.getValue(), "UTF-8"); // Encode 되어 넘어간 Value 다시 Decode
-                    } catch (UnsupportedEncodingException e) {
-                        return null;// 가져온 쿠키 전부다 검사
-                    }
-                }
-            }
-        }
-        return null;
     }
 
     public boolean isTokenValid(String token) {
@@ -130,7 +116,4 @@ public class JwtUtil {
         String tokenValue = substringToken(token);
         return getUserInfoFromToken(tokenValue).getSubject();
     }
-
-
-
 }
