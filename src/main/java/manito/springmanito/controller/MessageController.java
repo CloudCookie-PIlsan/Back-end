@@ -27,4 +27,9 @@ public class MessageController {
         return messageService.getSendMessageBox(token);
     }
 
+    @GetMapping("/messages/get")
+    public List<ReceiveMessageResponseDto> geReceiveMessageBox (@CookieValue("Authorization") String token) {
+        return messageService.getReceiveMessageBox(token);
+    }
+
 }
