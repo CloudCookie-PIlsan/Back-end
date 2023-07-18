@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import manito.springmanito.dto.MessageRequestDto;
 
+import java.util.List;
+
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
@@ -33,5 +35,6 @@ public class Message extends Timestamped {
         this.messageReceiver = myManito;
         this.messageGiver = loginUser;
     }
+
 
 }

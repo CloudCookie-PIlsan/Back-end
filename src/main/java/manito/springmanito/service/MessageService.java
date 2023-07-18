@@ -3,6 +3,8 @@ package manito.springmanito.service;
 import lombok.RequiredArgsConstructor;
 import manito.springmanito.dto.MessageRequestDto;
 import manito.springmanito.dto.MessageResponseDto;
+import manito.springmanito.dto.ReceiveMessageResponseDto;
+import manito.springmanito.dto.SendMessageResponseDto;
 import manito.springmanito.entity.Manito;
 import manito.springmanito.entity.Message;
 import manito.springmanito.entity.User;
@@ -11,6 +13,8 @@ import manito.springmanito.repository.ManitoRepository;
 import manito.springmanito.repository.MessageRepository;
 import manito.springmanito.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -35,4 +39,12 @@ public class MessageService {
     }
 
 
+    public List<SendMessageResponseDto> getSendMessageBox(String token) {
+        jwtUtil.isTokenValid(token);
+        String userId = jwtUtil.getUsernameFromToken(token);
+        User loginUser = userRepository.findByUserId(userId).orElseThrow(
+                () -> new IllegalArgumentException("로그인을 해주세요!"));
+        return messageRepository.findByMessageGiver(loginUser)
+                .stream().map(SendMessageResponseDto::new).toList();
+    }
 }
