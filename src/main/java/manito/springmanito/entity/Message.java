@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import manito.springmanito.dto.MessageRequestDto;
+import manito.springmanito.repository.MessageRepository;
 
 import static jakarta.persistence.FetchType.*;
 
@@ -26,5 +28,11 @@ public class Message extends Timestamped{
 
     @Column(nullable = false, length = 500)
     private String content;
+
+    public Message(MessageRequestDto messageRequestDto,User loginUser, User myManito) {
+        this.content = messageRequestDto.getContents();
+        this.messageReceiver = myManito;
+        this.messageGiver = loginUser;
+    }
 
 }
