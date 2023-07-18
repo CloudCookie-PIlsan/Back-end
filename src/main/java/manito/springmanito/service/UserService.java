@@ -50,7 +50,7 @@ public class UserService {
 
         // 비밀번호 일치여부 확인
         if (!passwordEncoder.matches(password, findUser.getPassword())) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다");
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
         // 토큰 만들기

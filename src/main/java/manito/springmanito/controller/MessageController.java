@@ -21,5 +21,4 @@ public class MessageController {
     ) {
         return messageService.sendMessage(messageRequestDto, token);
     }
-
 }
