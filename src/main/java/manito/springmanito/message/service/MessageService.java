@@ -53,7 +53,7 @@ public class MessageService {
         User loginUser = userRepository.findByUserId(userId).orElseThrow(
                 () -> new IllegalArgumentException("로그인을 해주세요!"));
         return messageRepository.findByMessageGiver(loginUser)
-                .stream().map(SendMessageResponseDto::new).toList();
+                .stream().limit(20).map(SendMessageResponseDto::new).toList();
     }
 
     // 받은 쪽지함
@@ -64,6 +64,6 @@ public class MessageService {
         User loginUser = userRepository.findByUserId(userId).orElseThrow(
                 () -> new IllegalArgumentException("로그인을 해주세요!"));
         return  messageRepository.findByMessageReceiver(loginUser)
-                .stream().map(ReceiveMessageResponseDto::new).toList();
+                .stream().limit(20).map(ReceiveMessageResponseDto::new).toList();
     }
 }
