@@ -9,7 +9,6 @@ import lombok.Setter;
 public class ManitoResponseDto {
 
     private String manitoGiver;
-
     public ManitoResponseDto(String myManito) {
         this.manitoGiver = myManito;
     }

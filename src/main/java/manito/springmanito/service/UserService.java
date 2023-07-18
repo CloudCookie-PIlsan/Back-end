@@ -49,10 +49,7 @@ public class UserService {
                 ()-> new IllegalArgumentException("해당 유저가 존재하지 않습니다."));
 
         // 비밀번호 일치여부 확인
-        System.out.println("password = " + password);
-        System.out.println(passwordEncoder.matches(password, findUser.getPassword()));
         if (!passwordEncoder.matches(password, findUser.getPassword())) {
-            System.out.println("이프 탐");
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다");
         }
 
