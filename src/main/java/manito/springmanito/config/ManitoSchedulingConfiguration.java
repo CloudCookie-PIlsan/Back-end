@@ -1,4 +1,4 @@
-package manito.springmanito.controller;
+package manito.springmanito.config;
 
 import lombok.RequiredArgsConstructor;
 import manito.springmanito.service.ManitoService;
