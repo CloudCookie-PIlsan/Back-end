@@ -1,19 +1,23 @@
-package manito.springmanito.entity;
+package manito.springmanito.manito.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import manito.springmanito.entity.Timestamped;
+import manito.springmanito.entity.User;
 
 @Entity
 @Getter
 @NoArgsConstructor
-public class Manito extends Timestamped{
+public class Manito extends Timestamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "manito_id")
     private Long id;
+
+    private boolean isAnswered = false;
 
     @ManyToOne
     @JoinColumn(name = "manitoSender_id")
@@ -26,5 +30,9 @@ public class Manito extends Timestamped{
     public Manito(User sender, User receiver) {
         this.manitoSender = sender;
         this.manitoReceiver = receiver;
+    }
+
+    public void isAnswered(boolean isAnswered) {
+        this.isAnswered = isAnswered;
     }
 }

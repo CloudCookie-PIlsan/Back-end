@@ -1,11 +1,9 @@
 package manito.springmanito.config;
 
 import lombok.RequiredArgsConstructor;
-import manito.springmanito.service.ManitoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import manito.springmanito.manito.service.ManitoService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
