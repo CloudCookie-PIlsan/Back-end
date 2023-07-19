@@ -3,6 +3,7 @@ package manito.springmanito.manito.service;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import manito.springmanito.manito.dto.AnswerRequestDto;
 import manito.springmanito.manito.dto.AnswerResponseDto;
 import manito.springmanito.manito.dto.TodayManitoResponseDto;
@@ -20,6 +21,7 @@ import java.util.stream.IntStream;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class ManitoService {
 
     private final ManitoRepository manitoRepository;
@@ -110,8 +112,6 @@ public class ManitoService {
         jwtUtil.isTokenValid(token);
         return jwtUtil.getUsernameFromToken(token);
     }
-
-
     /**
      * 유효한 매칭 찾기
      * @param users

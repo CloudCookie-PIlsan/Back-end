@@ -20,7 +20,7 @@ public class ManitoSchedulingConfiguration implements SchedulingConfigurer {
         taskRegistrar.addTriggerTask(
                 () -> manitoService.assignManito(),
                 triggerContext -> {
-                    CronTrigger cronTrigger = new CronTrigger("0 0 4 * * *"); // 매일 새벽 4시에 실행
+                    CronTrigger cronTrigger = new CronTrigger("0 0 12 * * *"); // 매일 새벽 4시에 실행
                     return cronTrigger.nextExecutionTime(triggerContext).toInstant();
                 }
         );

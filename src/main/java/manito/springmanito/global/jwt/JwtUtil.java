@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -60,23 +59,14 @@ public class JwtUtil {
             token = URLEncoder.encode(token, "utf-8")
                     .replaceAll("\\+", "%20");
 
-//            Cookie cookie = new Cookie(AUTHORIZATION_HEADER, token); // Name-Value
-//            cookie.setPath("/");
-//            cookie.setHttpOnly(true); // Enhances security by preventing access from JavaScript
-//            cookie.setSecure(true);// Use only with HTTPS
-//            cookie.sameSite("None"); // CSRF
-
-            ResponseCookie cookie = ResponseCookie.from(AUTHORIZATION_HEADER, token)
-                    .domain("http://localhost:3000")
-                    .sameSite("None")
-                    .secure(true)
-                    .path("/")
-                    .build();
-            response.addHeader("Set-Cookie", cookie.toString());
+            Cookie cookie = new Cookie(AUTHORIZATION_HEADER, token); // Name-Value
+            cookie.setPath("/");
+            cookie.setHttpOnly(true); // Enhances security by preventing access from JavaScript
+            cookie.setSecure(true); // Use only with HTTPS
+            cookie.setAttribute("SameSite", "None"); // CSRF
 
             // Response 객체에 Cookie 추가
-//            response.addCookie(cookie);
-//            response.setHeader("Set-Cookie", cookie.toString());
+            response.addCookie(cookie);
         } catch (UnsupportedEncodingException e) {
             throw new UnsupportedJwtException(e.getMessage());
         }
