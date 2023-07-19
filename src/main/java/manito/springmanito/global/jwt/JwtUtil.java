@@ -55,14 +55,14 @@ public class JwtUtil {
                 .compact();
     }
 
-    // 검증 시, JWT 토큰을 Substring
-//    public String substringToken(String tokenValue) {
-//        if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
-//            return tokenValue.substring(7);
-//        }
-//        log.error("Not Found Token");
-//        throw new JwtException("Not Found Token");
-//    }
+//     검증 시, JWT 토큰을 Substring
+    public String substringToken(String tokenValue) {
+        if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
+            return tokenValue.substring(7);
+        }
+        log.error("Not Found Token");
+        throw new JwtException("Not Found Token");
+    }
 
     // JWT 검증
     public boolean validateToken(String token) {
@@ -93,13 +93,13 @@ public class JwtUtil {
     }
 
     public boolean isTokenValid(String token) {
-//        String tokenValue = substringToken(token);
-        return validateToken(token);
+        String tokenValue = substringToken(token);
+        return validateToken(tokenValue);
     }
 
     // Token 에서 userId 가져오기
     public String getUsernameFromToken(String token) {
-//        String tokenValue = substringToken(token);
-        return getUserInfoFromToken(token).getSubject();
+        String tokenValue = substringToken(token);
+        return getUserInfoFromToken(tokenValue).getSubject();
     }
 }
