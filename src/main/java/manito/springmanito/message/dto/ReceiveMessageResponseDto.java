@@ -15,7 +15,7 @@ public class ReceiveMessageResponseDto {
     private LocalDateTime receiveDay;
     public ReceiveMessageResponseDto (Message message) {
         this.contents = message.getContent();
-        this.sendPersonUsername = message.getMessageGiver().getUserId();
+        this.sendPersonUsername = message.getMessageGiver().getUsername();
         this.receiveDay = message.getCreatedAt();
     }
 }

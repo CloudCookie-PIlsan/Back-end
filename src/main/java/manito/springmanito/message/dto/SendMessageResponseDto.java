@@ -13,12 +13,10 @@ public class SendMessageResponseDto {
     private String getPersonUsername;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDateTime sendDay;
-    private Long id;
 
     public SendMessageResponseDto(Message message) {
         this.contents = message.getContent();
-        this.getPersonUsername = message.getMessageReceiver().getUserId();
+        this.getPersonUsername = message.getMessageReceiver().getUsername();
         this.sendDay = message.getCreatedAt();
-        this.id = message.getId();
     }
 }
