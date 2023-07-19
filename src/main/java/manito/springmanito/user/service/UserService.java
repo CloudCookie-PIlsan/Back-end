@@ -4,7 +4,8 @@ package manito.springmanito.user.service;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import manito.springmanito.user.dto.LoginRequestDto;
-import manito.springmanito.user.dto.UserResponseDto;
+import manito.springmanito.user.dto.LoginResponseDto;
+import manito.springmanito.user.dto.LogoutResponseDto;
 import manito.springmanito.user.dto.SignupRequestDto;
 import manito.springmanito.user.entity.User;
 import manito.springmanito.global.jwt.JwtUtil;
@@ -26,7 +27,7 @@ public class UserService {
     private final JwtUtil jwtUtil;
 
     // 회원가입
-    public UserResponseDto signup(SignupRequestDto signupRequestDto) {
+    public LoginResponseDto signup(SignupRequestDto signupRequestDto) {
         String username = signupRequestDto.getUsername();
         String userId = signupRequestDto.getUserId();
         String password = signupRequestDto.getPassword();
@@ -39,11 +40,11 @@ public class UserService {
         }
         User savedUser = userRepository.save(new User(username, userId, encodePassword));
 
-        return new UserResponseDto(SIGNUP_USER);
+        return new LoginResponseDto(SIGNUP_USER);
     }
 
     // 로그인
-    public UserResponseDto login(LoginRequestDto loginRequestDto, HttpServletResponse httpServletResponse) {
+    public LogoutResponseDto login(LoginRequestDto loginRequestDto, HttpServletResponse httpServletResponse) {
         String userId = loginRequestDto.getUserId();
         String password = loginRequestDto.getPassword();
 
@@ -60,8 +61,8 @@ public class UserService {
         String token = jwtUtil.createToken(findUser.getUserId());
 
         // 쿠키에 저장
-        jwtUtil.addJwtToCookie(token, httpServletResponse);
+//        jwtUtil.addJwtToCookie(token, httpServletResponse);
 
-        return new UserResponseDto(LOGIN_USER);
+        return new LogoutResponseDto(token, LOGIN_USER);
     }
 }

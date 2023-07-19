@@ -20,18 +20,18 @@ public class MessageController {
     @PostMapping("/messages")
     public MessageResponseDto sendMessage(
             @RequestBody MessageRequestDto messageRequestDto,
-            @CookieValue("Authorization") String token
+            @RequestHeader("Authorization") String token
     ) {
         return messageService.sendMessage(messageRequestDto, token);
     }
 
     @GetMapping("/messages/send")
-    public List<SendMessageResponseDto> getSendMessageBox (@CookieValue(name = "Authorization", required = false) String token) {
+    public List<SendMessageResponseDto> getSendMessageBox (@RequestHeader(name = "Authorization", required = false) String token) {
         return messageService.getSendMessageBox(token);
     }
 
     @GetMapping("/messages/get")
-    public List<ReceiveMessageResponseDto> geReceiveMessageBox (@CookieValue(value = "Authorization", required = false) String token) {
+    public List<ReceiveMessageResponseDto> geReceiveMessageBox (@RequestHeader(value = "Authorization", required = false) String token) {
         return messageService.getReceiveMessageBox(token);
     }
 
