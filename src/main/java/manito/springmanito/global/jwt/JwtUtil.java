@@ -57,6 +57,8 @@ public class JwtUtil {
 
 //     검증 시, JWT 토큰을 Substring
     public String substringToken(String tokenValue) {
+        log.info("tokenValue: {}", tokenValue);
+        log.info("tokenValue.startsWith(): {}", tokenValue.startsWith(BEARER_PREFIX));
         if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
             return tokenValue.substring(7);
         }
