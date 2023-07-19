@@ -22,17 +22,6 @@ public class GlobalExceptionHandler {
         );
     }
 
-    @ExceptionHandler({RuntimeException.class})
-    public ResponseEntity<RestApiException> handleException(RuntimeException ex) {
-        RestApiException restApiException = new RestApiException(ex.getMessage());
-        return new ResponseEntity<>(
-                // HTTP body
-                restApiException,
-                // HTTP status code
-                HttpStatus.BAD_REQUEST
-        );
-    }
-
     @ExceptionHandler({NullPointerException.class})
     public ResponseEntity<RestApiException> handleException(NullPointerException ex) {
         RestApiException restApiException = new RestApiException(ex.getMessage());
