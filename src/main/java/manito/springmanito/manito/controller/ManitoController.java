@@ -26,21 +26,21 @@ public class ManitoController {
      * 오늘의 마니또를 찾습니다.
      */
     @GetMapping("/giver")
-    public TodayManitoResponseDto getTodayManito(@CookieValue(name = "Authorization", required = false) String token) {
+    public TodayManitoResponseDto getTodayManito(@RequestHeader(name = "Authorization", required = false) String token) {
         return manitoService.getTodayManito(token);
     }
     /**
      * 어제 나를 마니또 한 사람을 찾는다.
      */
     @GetMapping("/receiver")
-    public YesterdayManitoResponseDto getYesterdayManito(@CookieValue(name = "Authorization", required = false) String token) {
+    public YesterdayManitoResponseDto getYesterdayManito(@RequestHeader(name = "Authorization", required = false) String token) {
         return manitoService.getYesterdayManito(token);
     }
     /**
      * 오늘 나를 마니또 해주는 사람을 맞춘다.
      */
     @PostMapping("/guessManito")
-    public AnswerResponseDto postAnswer(@RequestBody AnswerRequestDto answerRequestDto, @CookieValue(name = "Authorization", required = false) String token) {
+    public AnswerResponseDto postAnswer(@RequestBody AnswerRequestDto answerRequestDto, @RequestHeader(name = "Authorization", required = false) String token) {
         return manitoService.postAnswer(answerRequestDto, token);
     }
 }

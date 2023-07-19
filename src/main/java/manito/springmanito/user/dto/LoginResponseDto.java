@@ -1,13 +1,12 @@
 package manito.springmanito.user.dto;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
-public class UserResponseDto {
+public class LoginResponseDto {
     private String message;
-    public UserResponseDto(String message) {
+
+    public LoginResponseDto (String message) {
         this.message = message;
     }
 }
