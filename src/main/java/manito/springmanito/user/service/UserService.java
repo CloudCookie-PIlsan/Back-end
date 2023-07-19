@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static manito.springmanito.global.dto.ErorrMessage.*;
+import static manito.springmanito.global.dto.SuccessMessage.*;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -32,11 +35,11 @@ public class UserService {
 
         Optional<User> user = userRepository.findByUserId(userId);
         if (user.isPresent()) {
-            throw new IllegalArgumentException("중복된 사용자가 있습니다.");
+            throw new IllegalArgumentException(DUPLICATION_USER);
         }
         User savedUser = userRepository.save(new User(username, userId, encodePassword));
 
-        return new UserResponseDto("회원가입 성공");
+        return new UserResponseDto(SIGNUP_USER);
     }
 
     // 로그인
@@ -46,11 +49,11 @@ public class UserService {
 
         // user 찾기
         User findUser = userRepository.findByUserId(userId).orElseThrow(
-                ()-> new IllegalArgumentException("해당 유저가 존재하지 않습니다."));
+                ()-> new IllegalArgumentException(NOT_FOUND_USER));
 
         // 비밀번호 일치여부 확인
         if (!passwordEncoder.matches(password, findUser.getPassword())) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+            throw new IllegalArgumentException(NOT_MATCH_USERPASSWORD);
         }
 
         // 토큰 만들기
@@ -59,6 +62,6 @@ public class UserService {
         // 쿠키에 저장
         jwtUtil.addJwtToCookie(token, httpServletResponse);
 
-        return new UserResponseDto("로그인이 되었습니다.");
+        return new UserResponseDto(LOGIN_USER);
     }
 }

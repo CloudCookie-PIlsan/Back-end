@@ -19,6 +19,8 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.IntStream;
 
+import static manito.springmanito.global.dto.ErorrMessage.*;
+
 @Service
 @RequiredArgsConstructor
 @Log4j2
@@ -57,11 +59,11 @@ public class ManitoService {
         String userId = getString(token);
 
         userRepository.findByUserId(userId).orElseThrow(() ->
-                new IllegalArgumentException("해당 아이디가 없습니다.")
+                new IllegalArgumentException(NOT_FOUND_USER)
         );
 
         Manito myManito = manitoRepository.findManitoByGiverNameAndToday(userId).orElseThrow(
-                () -> new IllegalArgumentException("매칭된 마니또가 없습니다. 조금만 기다려주세요.")
+                () -> new IllegalArgumentException(NOT_FOUND_TODAYMANITO)
         );
 
         return new TodayManitoResponseDto(myManito.getManitoReceiver().getUsername());
@@ -75,12 +77,12 @@ public class ManitoService {
         String userId = getString(token);
 
         userRepository.findByUserId(userId).orElseThrow(() ->
-                new IllegalArgumentException("해당 아이디가 없습니다.")
+                new IllegalArgumentException(NOT_FOUND_USER)
         );
 
         LocalDate yesterday = LocalDate.now().minusDays(1);
         Manito myManito = manitoRepository.findManitoByReceiverIdAndYesterday(userId, yesterday).orElseThrow(
-                () -> new IllegalArgumentException("매칭된 마니또가 없었습니다.")
+                () -> new IllegalArgumentException(NOT_FOUND_YESTERDAYMANTITO)
         );
 
         return new YesterdayManitoResponseDto(myManito.getManitoSender().getUsername());
@@ -90,11 +92,11 @@ public class ManitoService {
         String userId = getString(token);
 
         userRepository.findByUserId(userId).orElseThrow(() ->
-                new IllegalArgumentException("해당 아이디가 없습니다.")
+                new IllegalArgumentException(NOT_FOUND_USER)
         );
 
         Manito myManito = manitoRepository.findManitoByReceiverIdAndToday(userId).orElseThrow(
-                () -> new IllegalArgumentException("매칭된 마니또가 없습니다.")
+                () -> new IllegalArgumentException(NOT_FOUND_TODAYMANITO)
         );
 
         if (myManito.isAnswered()) {

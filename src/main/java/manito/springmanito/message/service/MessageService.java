@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static manito.springmanito.global.dto.ErorrMessage.*;
+import static manito.springmanito.global.dto.SuccessMessage.SEND_MESSAGE;
+
 @Service
 @RequiredArgsConstructor
 public class MessageService {
@@ -32,16 +35,16 @@ public class MessageService {
         String userId = jwtUtil.getUsernameFromToken(token);
         // 로그인을 한 유저
         User loginUser = userRepository.findByUserId(userId).orElseThrow(
-                () -> new IllegalArgumentException("로그인을 해주세요!"));
+                () -> new IllegalArgumentException(NOT_FOUND_USER));
 
 
         Manito myManito = manitoRepository.findManitoByGiverNameAndToday(loginUser.getUserId()).orElseThrow(
-                () -> new IllegalArgumentException("매칭된 마니또가 없습니다. 조금만 기다려주세요."));
+                () -> new IllegalArgumentException(NOT_FOUND_TODAYMANITO));
 
         // 쪽지 보내기
         Message message = new Message(messageRequestDto, loginUser, myManito.getManitoReceiver());  // 받은 PostRequest -> Entity 로
         messageRepository.save(message);
-        return new MessageResponseDto("쪽지가 발송되었습니다!");
+        return new MessageResponseDto(SEND_MESSAGE);
     }
 
 
@@ -51,7 +54,7 @@ public class MessageService {
         // 로그인을 한 유저
         String userId = jwtUtil.getUsernameFromToken(token);
         User loginUser = userRepository.findByUserId(userId).orElseThrow(
-                () -> new IllegalArgumentException("로그인을 해주세요!"));
+                () -> new IllegalArgumentException(NOT_FOUND_USER));
         return messageRepository.findByMessageGiver(loginUser)
                 .stream().limit(20).map(SendMessageResponseDto::new).toList();
     }
@@ -62,7 +65,7 @@ public class MessageService {
         // 로그인을 한 유저
         String userId = jwtUtil.getUsernameFromToken(token);
         User loginUser = userRepository.findByUserId(userId).orElseThrow(
-                () -> new IllegalArgumentException("로그인을 해주세요!"));
+                () -> new IllegalArgumentException(NOT_FOUND_USER));
         return  messageRepository.findByMessageReceiver(loginUser)
                 .stream().limit(20).map(ReceiveMessageResponseDto::new).toList();
     }

@@ -1,7 +1,6 @@
 package manito.springmanito.global.exception;
 
 
-import io.jsonwebtoken.JwtException;
 import manito.springmanito.global.dto.RestApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,16 +19,6 @@ public class GlobalExceptionHandler {
             restApiException,
             // HTTP status code
             HttpStatus.BAD_REQUEST
-        );
-    }
-    @ExceptionHandler({JwtException.class})
-    public ResponseEntity<RestApiException> handleException(JwtException ex) {
-        RestApiException restApiException = new RestApiException(ex.getMessage());
-        return new ResponseEntity<>(
-                // HTTP body
-                restApiException,
-                // HTTP status code
-                HttpStatus.BAD_REQUEST
         );
     }
 
@@ -64,6 +53,17 @@ public class GlobalExceptionHandler {
                 restApiException,
                 // HTTP status code
                 HttpStatus.BAD_REQUEST
+        );
+    }
+
+    @ExceptionHandler(JwtException.class)
+    public ResponseEntity<RestApiException> processValidationError(JwtException ex) {
+        RestApiException restApiException = new RestApiException(ex.getMessage());
+        return new ResponseEntity<>(
+                // HTTP body
+                restApiException,
+                // HTTP status code
+                HttpStatus.INTERNAL_SERVER_ERROR
         );
     }
 }

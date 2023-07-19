@@ -7,6 +7,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import manito.springmanito.global.exception.JwtException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
@@ -69,7 +70,7 @@ public class JwtUtil {
             response.addCookie(cookie);
 
         } catch (UnsupportedEncodingException e) {
-            throw new UnsupportedJwtException(e.getMessage());
+            throw new JwtException(e.getMessage());
         }
     }
 
@@ -79,7 +80,7 @@ public class JwtUtil {
             return tokenValue.substring(7);
         }
         log.error("Not Found Token");
-        throw new NullPointerException("Not Found Token");
+        throw new JwtException("Not Found Token");
     }
 
     // JWT 검증
@@ -89,16 +90,16 @@ public class JwtUtil {
             return true;
         } catch (SecurityException | MalformedJwtException | SignatureException e) {
             log.error("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
-            throw new IllegalArgumentException("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
+            throw new JwtException("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
         } catch (ExpiredJwtException e) {
             log.error("Expired JWT token, 만료된 JWT token 입니다.");
-            throw  new IllegalArgumentException("Expired JWT token, 만료된 JWT token 입니다.");
+            throw  new JwtException("Expired JWT token, 만료된 JWT token 입니다.");
         } catch (UnsupportedJwtException e) {
             log.error("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
-            throw new IllegalArgumentException("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
+            throw new JwtException("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
         } catch (IllegalArgumentException e) {
             log.error("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
-            throw new IllegalArgumentException("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
+            throw new JwtException("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
         }
     }
 

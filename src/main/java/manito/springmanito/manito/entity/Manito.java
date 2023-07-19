@@ -18,11 +18,11 @@ public class Manito extends Timestamped {
 
     private boolean isAnswered = false;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manitoSender_id")
     private User manitoSender;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manitoReceiver_id")
     private User manitoReceiver;
 
