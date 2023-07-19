@@ -61,7 +61,7 @@ public class JwtUtil {
 
             Cookie cookie = new Cookie(AUTHORIZATION_HEADER, token); // Name-Value
             cookie.setPath("/");
-            cookie.setHttpOnly(true); // Enhances security by preventing access from JavaScript
+            cookie.setHttpOnly(false); // Enhances security by preventing access from JavaScript
             cookie.setSecure(true); // Use only with HTTPS
             cookie.setAttribute("SameSite", "None"); // CSRF
 
