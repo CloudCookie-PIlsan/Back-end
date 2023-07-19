@@ -26,12 +26,12 @@ public class MessageController {
     }
 
     @GetMapping("/messages/send")
-    public List<SendMessageResponseDto> getSendMessageBox (@CookieValue("Authorization") String token) {
+    public List<SendMessageResponseDto> getSendMessageBox (@CookieValue(name = "Authorization", required = false) String token) {
         return messageService.getSendMessageBox(token);
     }
 
     @GetMapping("/messages/get")
-    public List<ReceiveMessageResponseDto> geReceiveMessageBox (@CookieValue("Authorization") String token) {
+    public List<ReceiveMessageResponseDto> geReceiveMessageBox (@CookieValue(value = "Authorization", required = false) String token) {
         return messageService.getReceiveMessageBox(token);
     }
 
