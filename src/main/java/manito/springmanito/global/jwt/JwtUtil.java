@@ -55,25 +55,6 @@ public class JwtUtil {
                 .compact();
     }
 
-    // Cookie 에 저장 -> 공백 없애는 encoding 필요 O
-    public void addJwtToCookie(String token, HttpServletResponse response) {
-        try {
-            token = URLEncoder.encode(token, "utf-8")
-                    .replaceAll("\\+", "%20");
-
-            Cookie cookie = new Cookie(AUTHORIZATION_HEADER, token); // Name-Value
-            cookie.setPath("/");
-            cookie.setHttpOnly(false); // Enhances security by preventing access from JavaScript
-            cookie.setSecure(true); // Use only with HTTPS
-            cookie.setAttribute("SameSite", "None"); // CSRF
-            // Response 객체에 Cookie 추가
-            response.addCookie(cookie);
-
-        } catch (UnsupportedEncodingException e) {
-            throw new JwtException(e.getMessage());
-        }
-    }
-
     // 검증 시, JWT 토큰을 Substring
     public String substringToken(String tokenValue) {
         if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {

@@ -1,6 +1,7 @@
 package manito.springmanito.manito.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import manito.springmanito.manito.dto.AnswerRequestDto;
 import manito.springmanito.manito.dto.AnswerResponseDto;
 import manito.springmanito.manito.dto.TodayManitoResponseDto;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/manitoes")
+@Slf4j
 public class ManitoController {
 
     private final ManitoService manitoService;
@@ -27,6 +29,7 @@ public class ManitoController {
      */
     @GetMapping("/giver")
     public TodayManitoResponseDto getTodayManito(@RequestHeader(name = "Authorization", required = false) String token) {
+        log.info("토큰" + token);
         return manitoService.getTodayManito(token);
     }
     /**
