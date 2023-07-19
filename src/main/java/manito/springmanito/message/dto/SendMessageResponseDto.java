@@ -5,17 +5,20 @@ import lombok.Getter;
 import manito.springmanito.message.entity.Message;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 public class SendMessageResponseDto {
     private String contents;
-    private String messageReceiver;
+    private String getPersonUsername;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
-    private LocalDate sendDay;
+    private LocalDateTime sendDay;
+    private Long id;
 
     public SendMessageResponseDto(Message message) {
         this.contents = message.getContent();
-        this.messageReceiver = message.getMessageReceiver().getUserId();
+        this.getPersonUsername = message.getMessageReceiver().getUserId();
         this.sendDay = message.getCreatedAt();
+        this.id = message.getId();
     }
 }

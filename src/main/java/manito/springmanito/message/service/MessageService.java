@@ -55,7 +55,7 @@ public class MessageService {
         String userId = jwtUtil.getUsernameFromToken(token);
         User loginUser = userRepository.findByUserId(userId).orElseThrow(
                 () -> new IllegalArgumentException(NOT_FOUND_USER));
-        return messageRepository.findByMessageGiver(loginUser)
+        return messageRepository.findByMessageGiverOrderByCreatedAtDesc(loginUser)
                 .stream().limit(20).map(SendMessageResponseDto::new).toList();
     }
 
@@ -66,7 +66,7 @@ public class MessageService {
         String userId = jwtUtil.getUsernameFromToken(token);
         User loginUser = userRepository.findByUserId(userId).orElseThrow(
                 () -> new IllegalArgumentException(NOT_FOUND_USER));
-        return  messageRepository.findByMessageReceiver(loginUser)
+        return  messageRepository.findByMessageReceiverOrderByCreatedAtDesc(loginUser)
                 .stream().limit(20).map(ReceiveMessageResponseDto::new).toList();
     }
 }
