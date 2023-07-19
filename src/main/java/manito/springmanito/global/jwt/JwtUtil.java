@@ -57,10 +57,6 @@ public class JwtUtil {
 
 //     검증 시, JWT 토큰을 Substring
     public String substringToken(String tokenValue) {
-        log.info("tokenValue: {}", tokenValue);
-        log.info("tokenValue.startsWith(): {}", tokenValue.startsWith(BEARER_PREFIX));
-        log.info("tokenValue.substring(): {}", tokenValue.substring(7));
-        log.info("StringUtils.hasText(tokenValue): {}", StringUtils.hasText(tokenValue));
         if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
             return tokenValue.substring(7);
         }
@@ -75,17 +71,14 @@ public class JwtUtil {
             return true;
         } catch (SecurityException | MalformedJwtException | SignatureException e) {
             log.error("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
-            throw new JwtException("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
         } catch (ExpiredJwtException e) {
             log.error("Expired JWT token, 만료된 JWT token 입니다.");
-            throw  new JwtException("Expired JWT token, 만료된 JWT token 입니다.");
         } catch (UnsupportedJwtException e) {
             log.error("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
-            throw new JwtException("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
         } catch (IllegalArgumentException e) {
             log.error("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
-            throw new JwtException("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
         }
+        return false;
     }
 
     // JWT 에서 사용자 정보 가지고 오기
