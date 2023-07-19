@@ -59,6 +59,8 @@ public class JwtUtil {
     public String substringToken(String tokenValue) {
         log.info("tokenValue: {}", tokenValue);
         log.info("tokenValue.startsWith(): {}", tokenValue.startsWith(BEARER_PREFIX));
+        log.info("tokenValue.substring(): {}", tokenValue.substring(7));
+        log.info("StringUtils.hasText(tokenValue): {}", StringUtils.hasText(tokenValue));
         if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
             return tokenValue.substring(7);
         }
