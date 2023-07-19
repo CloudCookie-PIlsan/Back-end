@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -59,14 +60,23 @@ public class JwtUtil {
             token = URLEncoder.encode(token, "utf-8")
                     .replaceAll("\\+", "%20");
 
-            Cookie cookie = new Cookie(AUTHORIZATION_HEADER, token); // Name-Value
-            cookie.setPath("/");
-            cookie.setHttpOnly(false); // Enhances security by preventing access from JavaScript
-            cookie.setSecure(true); // Use only with HTTPS
-            cookie.setAttribute("SameSite", "None"); // CSRF
+//            Cookie cookie = new Cookie(AUTHORIZATION_HEADER, token); // Name-Value
+//            cookie.setPath("/");
+//            cookie.setHttpOnly(false); // Enhances security by preventing access from JavaScript
+//            cookie.setSecure(true); // Use only with HTTPS
+//            cookie.setAttribute("SameSite", "None"); // CSRF
+//            // Response 객체에 Cookie 추가
+//            response.addCookie(cookie);
 
-            // Response 객체에 Cookie 추가
-            response.addCookie(cookie);
+            ResponseCookie cookie = ResponseCookie.from(AUTHORIZATION_HEADER, token)
+                    .path("/")
+                    .secure(true)
+                    .sameSite("None")
+                    .httpOnly(false)
+                    .domain("pink-love.shop")
+                    .build();
+            response.setHeader("Set-Cookie", cookie.toString());
+
         } catch (UnsupportedEncodingException e) {
             throw new UnsupportedJwtException(e.getMessage());
         }
