@@ -64,7 +64,7 @@ public class ManitoService {
                 () -> new IllegalArgumentException("매칭된 마니또가 없습니다. 조금만 기다려주세요.")
         );
 
-        return new TodayManitoResponseDto(myManito.getManitoSender().getUsername());
+        return new TodayManitoResponseDto(myManito.getManitoReceiver().getUsername());
     }
 
     /**
