@@ -12,6 +12,7 @@ import org.springframework.scheduling.support.CronTrigger;
 @EnableScheduling
 @RequiredArgsConstructor
 public class ManitoSchedulingConfiguration implements SchedulingConfigurer {
+
     private final ManitoService manitoService;
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {

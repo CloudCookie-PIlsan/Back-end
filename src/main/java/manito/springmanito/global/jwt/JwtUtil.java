@@ -65,7 +65,7 @@ public class JwtUtil {
             return tokenValue.substring(7);
         }
         log.error("Not Found Token");
-        throw new JwtException("Not Found Token");
+        throw new NullPointerException("Not Found Token");
     }
 
     // JWT 검증
