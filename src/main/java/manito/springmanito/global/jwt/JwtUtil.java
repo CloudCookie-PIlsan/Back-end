@@ -3,11 +3,16 @@ package manito.springmanito.global.jwt;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import manito.springmanito.global.exception.JwtErorrException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
@@ -47,13 +52,32 @@ public class JwtUtil {
                 .compact();
     }
 
-//     검증 시, JWT 토큰을 Substring
+    // Cookie 에 저장 -> 공백 없애는 encoding 필요 O
+    public void addJwtToCookie(String token, HttpServletResponse response) {
+        try {
+            token = URLEncoder.encode(token, "utf-8")
+                    .replaceAll("\\+", "%20");
+
+            Cookie cookie = new Cookie(AUTHORIZATION_HEADER, token); // Name-Value
+            cookie.setPath("/");
+            cookie.setHttpOnly(false); // Enhances security by preventing access from JavaScript
+            cookie.setSecure(true); // Use only with HTTPS
+            cookie.setAttribute("SameSite", "None"); // CSRF
+            // Response 객체에 Cookie 추가
+            response.addCookie(cookie);
+
+        } catch (UnsupportedEncodingException e) {
+            throw new JwtErorrException(e.getMessage());
+        }
+    }
+
+    // 검증 시, JWT 토큰을 Substring
     public String substringToken(String tokenValue) {
         if (StringUtils.hasText(tokenValue) && tokenValue.startsWith(BEARER_PREFIX)) {
             return tokenValue.substring(7);
         }
         log.error("Not Found Token");
-        throw new NullPointerException("Not Found Token");
+        throw new JwtErorrException("Not Found Token");
     }
 
     // JWT 검증
@@ -63,14 +87,17 @@ public class JwtUtil {
             return true;
         } catch (SecurityException | MalformedJwtException | SignatureException e) {
             log.error("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
+            throw new JwtErorrException("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");
         } catch (ExpiredJwtException e) {
             log.error("Expired JWT token, 만료된 JWT token 입니다.");
+            throw  new JwtErorrException("Expired JWT token, 만료된 JWT token 입니다.");
         } catch (UnsupportedJwtException e) {
             log.error("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
+            throw new JwtErorrException("Unsupported JWT token, 지원되지 않는 JWT 토큰 입니다.");
         } catch (IllegalArgumentException e) {
             log.error("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
+            throw new JwtErorrException("JWT claims is empty, 잘못된 JWT 토큰 입니다.");
         }
-        return false;
     }
 
     // JWT 에서 사용자 정보 가지고 오기
