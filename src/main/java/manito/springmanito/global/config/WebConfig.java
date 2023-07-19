@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
 //                .allowedOrigins("http://localhost:3000")
-                .allowedOrigins("https://front-end-sepia-eight.vercel.app")
+                .allowedOrigins("https://front-end-pi-eight.vercel.app/")
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .allowCredentials(true)
