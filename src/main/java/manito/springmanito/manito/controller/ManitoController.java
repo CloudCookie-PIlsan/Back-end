@@ -37,6 +37,7 @@ public class ManitoController {
      */
     @GetMapping("/receiver")
     public YesterdayManitoResponseDto getYesterdayManito(@RequestHeader(name = "Authorization", required = false) String token) {
+        log.info("토큰" + token);
         return manitoService.getYesterdayManito(token);
     }
     /**
@@ -44,6 +45,7 @@ public class ManitoController {
      */
     @PostMapping("/guessManito")
     public AnswerResponseDto postAnswer(@RequestBody AnswerRequestDto answerRequestDto, @RequestHeader(name = "Authorization", required = false) String token) {
+        log.info("토큰" + token);
         return manitoService.postAnswer(answerRequestDto, token);
     }
 }
