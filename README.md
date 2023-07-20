@@ -47,21 +47,6 @@
 ![image](https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/e23cb218-098b-4e79-b672-58faedd5ea0a)
 
 ### API
-|카테고리|기능|METHOD|URL|header|request|response|비고|예외처리|
-|------|---|---|---|---|---|---|---|---|
-|회원정보|회원가입|POST|signup|{
-statusCode:200
-}
-OR
-{
-statusCode:400
-}|{
-username:
-userId:
-password:
-}|{
-message: ‘회원가입에 성공하였습니다.’
-}|  |{
-errorMessage : “중복된 사용자가 있습니다.”
-}|
+<img width="1118" alt="image" src="https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/c30bfda9-c2ec-4326-88aa-992a8138c920">
+
 
