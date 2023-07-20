@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import manito.springmanito.message.entity.Message;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 
 @Getter
@@ -18,6 +19,13 @@ public class SendMessageResponseDto {
     public SendMessageResponseDto(Message message) {
         this.contents = message.getContent();
         this.getPersonUsername = message.getMessageReceiver().getUsername();
-        this.sendDay = message.getCreatedAt();
+        this.sendDay = adjustTimeByHours(message.getCreatedAt(), -9);
+    }
+
+    private Date adjustTimeByHours(Date date, int hours) {
+        Instant instant = date.toInstant();
+        OffsetDateTime offsetDateTime = instant.atOffset(ZoneOffset.UTC).plusHours(hours);
+        return Date.from(offsetDateTime.toInstant());
+
     }
 }
