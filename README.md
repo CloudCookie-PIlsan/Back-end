@@ -41,10 +41,10 @@
 
 
 ### USECASE
-![마니또 유즈케이스](https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/a4657e1b-cf33-46dd-b9cc-733981309a19)
+<img src="https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/a4657e1b-cf33-46dd-b9cc-733981309a19" width="200" height="300">
 
 ### ERD
-![image](https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/e23cb218-098b-4e79-b672-58faedd5ea0a)
+<img src="https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/e23cb218-098b-4e79-b672-58faedd5ea0a" width="200" height="300">
 
 ### API
 <img width="1118" alt="image" src="https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/c30bfda9-c2ec-4326-88aa-992a8138c920">
