@@ -24,11 +24,10 @@
 마니또라는 프로젝트를 하게 되었습니다. 
 
 
-
-
 # 기술 스택
 ### Environment
 <img src="https://img.shields.io/badge/intelliJ-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
+
 
 ### Development
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
@@ -41,4 +40,28 @@
 <img src="https://img.shields.io/badge/GithubActions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">
 
 
+### USECASE
+![마니또 유즈케이스](https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/a4657e1b-cf33-46dd-b9cc-733981309a19)
+
+### ERD
+![image](https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/e23cb218-098b-4e79-b672-58faedd5ea0a)
+
+### API
+|카테고리|기능|METHOD|URL|header|request|response|비고|예외처리|
+|------|---|---|---|---|---|---|---|---|
+|회원정보|회원가입|POST|signup|{
+statusCode:200
+}
+OR
+{
+statusCode:400
+}|{
+username:
+userId:
+password:
+}|{
+message: ‘회원가입에 성공하였습니다.’
+}|  |{
+errorMessage : “중복된 사용자가 있습니다.”
+}|
 
