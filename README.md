@@ -25,8 +25,10 @@
 
 
 # 기술 스택
-### Front-end Link
+### Front-end
 <a href="https://github.com/CloudCookie-PIlsan/Front-end.git" target="_blank"> Front-end 탁승현님 </a>
+
+<br>
 
 ### Back-end
 #### Environment
