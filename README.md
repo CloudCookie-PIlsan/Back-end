@@ -25,22 +25,25 @@
 
 
 # 기술 스택
-### Environment
+### Front-end Link
+<a href="https://github.com/CloudCookie-PIlsan/Front-end.git" target="_blank"> Front-end 탁승현님 </a>
+
+### Back-end
+#### Environment
 <img src="https://img.shields.io/badge/intelliJ-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
 
 
-### Development
+#### Development
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
 
-### Distribution - CI / CD
+#### Distribution - CI / CD
 <img src="https://img.shields.io/badge/AmazonAWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white">
 <img src="https://img.shields.io/badge/AmazonS3-569A31?style=for-the-badge&logo=amazons3&logoColor=white">
 <img src="https://img.shields.io/badge/AmazonEC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
 <img src="https://img.shields.io/badge/AmazonRDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white">
 <img src="https://img.shields.io/badge/GithubActions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">
 
-### Front-end Link
-<a href="https://github.com/CloudCookie-PIlsan/Front-end.git" target="_blank"> Front-end 탁승현님 </a>
+----
 
 ### USECASE
 <img src="https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/a4657e1b-cf33-46dd-b9cc-733981309a19" width="500" height="400">
