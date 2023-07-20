@@ -39,6 +39,8 @@
 <img src="https://img.shields.io/badge/AmazonRDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white">
 <img src="https://img.shields.io/badge/GithubActions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">
 
+### Front-end Link
+<a href="https://github.com/CloudCookie-PIlsan/Front-end.git" target="_blank"> Front-end 탁승현님 </a>
 
 ### USECASE
 <img src="https://github.com/CloudCookie-PIlsan/Back-end/assets/65941341/a4657e1b-cf33-46dd-b9cc-733981309a19" width="500" height="400">
