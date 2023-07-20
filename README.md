@@ -19,6 +19,9 @@
 5. 보낸 쪽지함 / 받은 쪽지함 (최근으로 받은 쪽지 20개)
 6. 나의 마니또가 누구인지 맞추기
 
+항해99 부트캠프에서는 N, R, S반으로 나뉩니다.
+최종프로젝트에서 다른 반 사람들과 함께 프로젝트를 진행하게 되는데 그 전에 먼저 아는 사이가 되고 친해는데 도움이 되기 위해
+마니또라는 프로젝트를 하게 되었습니다. 
 
 
 
@@ -27,10 +30,10 @@
 ### Environment
 <img src="https://img.shields.io/badge/intelliJ-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
 
-## Development
+### Development
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
 
-## Distribution - CI / CD
+### Distribution - CI / CD
 <img src="https://img.shields.io/badge/AmazonAWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white">
 <img src="https://img.shields.io/badge/AmazonS3-569A31?style=for-the-badge&logo=amazons3&logoColor=white">
 <img src="https://img.shields.io/badge/AmazonEC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
