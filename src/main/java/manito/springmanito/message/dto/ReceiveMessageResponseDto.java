@@ -6,13 +6,14 @@ import manito.springmanito.message.entity.Message;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 public class ReceiveMessageResponseDto {
     private String contents;
     private String sendPersonUsername;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
-    private LocalDateTime receiveDay;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+    private Date receiveDay;
     public ReceiveMessageResponseDto (Message message) {
         this.contents = message.getContent();
         this.sendPersonUsername = message.getMessageGiver().getUsername();

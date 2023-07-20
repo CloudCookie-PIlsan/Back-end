@@ -1,5 +1,6 @@
 package manito.springmanito.message.service;
 
+import jakarta.persistence.PrePersist;
 import lombok.RequiredArgsConstructor;
 import manito.springmanito.manito.entity.Manito;
 
@@ -15,6 +16,9 @@ import manito.springmanito.manito.repository.ManitoRepository;
 import manito.springmanito.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import static manito.springmanito.global.dto.ErorrMessage.*;
@@ -28,6 +32,7 @@ public class MessageService {
     private final UserRepository userRepository;
     private final ManitoRepository manitoRepository;
     private final JwtUtil jwtUtil;
+    public static Date today = new Date();
 
     // 쪽지 보내기
     public MessageResponseDto sendMessage(MessageRequestDto messageRequestDto, String token) {
@@ -38,7 +43,7 @@ public class MessageService {
                 () -> new IllegalArgumentException(NOT_FOUND_USER));
 
 
-        Manito myManito = manitoRepository.findManitoByGiverNameAndToday(loginUser.getUserId()).orElseThrow(
+        Manito myManito = manitoRepository.findManitoByGiverNameAndToday(loginUser.getUserId(), today).orElseThrow(
                 () -> new IllegalArgumentException(NOT_FOUND_TODAYMANITO));
 
         // 쪽지 보내기
@@ -68,5 +73,13 @@ public class MessageService {
                 () -> new IllegalArgumentException(NOT_FOUND_USER));
         return  messageRepository.findByMessageReceiverOrderByCreatedAtDesc(loginUser)
                 .stream().limit(20).map(ReceiveMessageResponseDto::new).toList();
+    }
+
+    @PrePersist
+    public void prePersistToday() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.HOUR, 9);
+        today = calendar.getTime();
     }
 }

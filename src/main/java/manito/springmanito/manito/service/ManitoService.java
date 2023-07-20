@@ -1,6 +1,6 @@
 package manito.springmanito.manito.service;
 
-import io.jsonwebtoken.Claims;
+import jakarta.persistence.PrePersist;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -15,7 +15,7 @@ import manito.springmanito.manito.entity.Manito;
 import manito.springmanito.user.entity.User;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -33,6 +33,9 @@ public class ManitoService {
     private final JwtUtil jwtUtil;
 
     private final HttpServletRequest req;
+    public static Date today = new Date();
+    public static Date yesterday = new Date();
+
 
     /**
      * 오늘의 마니또 매칭
@@ -62,7 +65,7 @@ public class ManitoService {
                 new IllegalArgumentException(NOT_FOUND_USER)
         );
 
-        Manito myManito = manitoRepository.findManitoByGiverNameAndToday(userId).orElseThrow(
+        Manito myManito = manitoRepository.findManitoByGiverNameAndToday(userId, today).orElseThrow(
                 () -> new IllegalArgumentException(NOT_FOUND_TODAYMANITO)
         );
 
@@ -80,7 +83,6 @@ public class ManitoService {
                 new IllegalArgumentException(NOT_FOUND_USER)
         );
 
-        LocalDate yesterday = LocalDate.now().minusDays(1);
         Manito myManito = manitoRepository.findManitoByReceiverIdAndYesterday(userId, yesterday).orElseThrow(
                 () -> new IllegalArgumentException(NOT_FOUND_YESTERDAYMANTITO)
         );
@@ -95,7 +97,8 @@ public class ManitoService {
                 new IllegalArgumentException(NOT_FOUND_USER)
         );
 
-        Manito myManito = manitoRepository.findManitoByReceiverIdAndToday(userId).orElseThrow(
+
+        Manito myManito = manitoRepository.findManitoByReceiverIdAndToday(userId, today).orElseThrow(
                 () -> new IllegalArgumentException(NOT_FOUND_TODAYMANITO)
         );
 
@@ -134,6 +137,23 @@ public class ManitoService {
             }
         } while (!isValid);
         return shuffledUsers;
+    }
+
+
+    @PrePersist
+    public void prePersistToday() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.HOUR, 9);
+        today = calendar.getTime();
+    }
+
+    @PrePersist
+    public void prePersistYesterday() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.HOUR, -15);
+        yesterday = calendar.getTime();
     }
 }
 
