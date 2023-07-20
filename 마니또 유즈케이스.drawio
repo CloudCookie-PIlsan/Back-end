@@ -1,9 +1,57 @@
-<mxfile host="app.diagrams.net" modified="2023-07-17T08:58:06.544Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" version="21.5.1" etag="t667Nd3qJwsqMIhixRmh" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-20T06:46:57.816Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="DRJxoZSlXGHDfcxGTTUX" version="21.5.1" type="github">
   <diagram name="페이지-1" id="TE9N-JAmAIUnDPbQkB6N">
-    <mxGraphModel>
+    <mxGraphModel dx="1434" dy="765" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dXf2_hJ0Q0j3iUHRpGf6-1" target="dXf2_hJ0Q0j3iUHRpGf6-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dXf2_hJ0Q0j3iUHRpGf6-1" target="dXf2_hJ0Q0j3iUHRpGf6-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-1" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="550" width="80" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-16" value="회원가입" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="300" y="410" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dXf2_hJ0Q0j3iUHRpGf6-17" target="dXf2_hJ0Q0j3iUHRpGf6-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dXf2_hJ0Q0j3iUHRpGf6-17" target="dXf2_hJ0Q0j3iUHRpGf6-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dXf2_hJ0Q0j3iUHRpGf6-17" target="dXf2_hJ0Q0j3iUHRpGf6-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dXf2_hJ0Q0j3iUHRpGf6-17" target="dXf2_hJ0Q0j3iUHRpGf6-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dXf2_hJ0Q0j3iUHRpGf6-17" target="dXf2_hJ0Q0j3iUHRpGf6-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-17" value="로그인" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="300" y="690" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-18" value="오늘의 마니또 확인" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="565" y="710" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-19" value="나의 마니또에게&lt;br style=&quot;font-size: 17px;&quot;&gt;쪽지 보내기" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="565" y="585" width="170" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-20" value="마니또에게 &lt;br style=&quot;font-size: 17px;&quot;&gt;받은 쪽지 확인하기" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="565" y="440" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-21" value="마니또 매칭&lt;br&gt;(매일 자정 자동 매칭)" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="224" y="830" width="190" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-30" value="전날 마니또 확인" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="565" y="840" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="dXf2_hJ0Q0j3iUHRpGf6-31" value="마니또 맞추기" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="565" y="970" width="170" height="90" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
